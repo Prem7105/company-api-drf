@@ -90,3 +90,18 @@ Then open **http://127.0.0.1:8000/api/v1/companies/** in your browser.
 - Add token / JWT authentication.
 - Add pagination, filtering, and validation.
 - Write tests and add a `requirements.txt`.
+
+---
+
+## Architecture
+
+Requests enter through Django URL routing and DRF's router, then pass through viewsets and serializers to the company and employee models. The development setup uses SQLite.
+
+```mermaid
+flowchart LR
+  C[API client] --> R[URLs and DRF router]
+  R --> V[ViewSets]
+  V --> S[Serializers and validation]
+  S --> M[Company and Employee models]
+  M --> D[(SQLite database)]
+```
